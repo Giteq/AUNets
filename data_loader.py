@@ -26,8 +26,8 @@ class BP4D(Dataset):
         self.image_size = image_size
         self.OF = OF
         self.verbose = verbose
-        self.meta = '/home/afromero/datos/Databases/BP4D/'
-        self.metaSSD = '/home/afromero/ssd2'
+        self.meta = '/media/patryk/data/BP4D'  # '/home/afromero/datos/Databases/BP4D/'
+        self.metaSSD = '/media/patryk/data/BP4D/normal/fold_0/AU01'# '/home/afromero/ssd2'
         # self.metaSSD = '../BP4D'
         if mode == 'sample':
             mode = 'train'
@@ -48,7 +48,7 @@ class BP4D(Dataset):
     def preprocess(self):
         self.filenames = []
         self.labels = []
-        lines = [i.replace(self.meta, '').strip() for i in self.lines]
+        lines = [i.replace(self.meta, '').strip() for i in self.lines] # usuwa sciezke czyli /home etc. zarowno w lbael jak i jpg
         if self.shuffling:
             random.shuffle(lines)  # random shuffling
         if self.verbose:
